@@ -3,6 +3,8 @@ package com.CV.PlantOps.Products.Entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
 
 @Entity
 @Table(name = "products")
@@ -17,7 +19,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "internal_code", nullable = false, unique = true, length = 60)
+    @Generated(event = EventType.INSERT)
+    @Column(name = "internal_code", nullable = false, unique = true, length = 60, insertable = false, updatable = false)
     private String internalCode;
 
     @Column(name = "name", nullable = false, length = 150)
