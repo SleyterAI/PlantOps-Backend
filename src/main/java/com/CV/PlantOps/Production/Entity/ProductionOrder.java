@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -32,8 +34,9 @@ public class ProductionOrder {
     @JoinColumn(name = "user_id", nullable = false)
     private User operator;
 
-    @Column(name = "order_number", nullable = false, unique = true, length = 60)
-    private String orderNumber;
+    @Generated(event = EventType.INSERT)
+    @Column(name = "order_code", nullable = false, unique = true, length = 60, insertable = false, updatable = false)
+    private String orderCode;
 
     @PositiveOrZero
     @Column(name = "planned_quantity", nullable = false, precision = 14, scale = 3)
