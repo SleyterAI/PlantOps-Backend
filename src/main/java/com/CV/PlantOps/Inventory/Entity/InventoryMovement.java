@@ -8,13 +8,17 @@ import com.CV.PlantOps.Distribution.Entity.Location;
 import com.CV.PlantOps.Inventory.Enum.MovementType;
 import com.CV.PlantOps.Users.Entity.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "inventory_movements")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class InventoryMovement {
 
     @Id

@@ -6,12 +6,14 @@ import com.CV.PlantOps.Distribution.Entity.Location;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "replacement_claim")
+@Table(name = "replacement_claims")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,7 +25,8 @@ public class ReplacementClaim {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "claim_code", nullable = false, unique = true, length = 60)
+    @Generated(event = EventType.INSERT)
+    @Column(name = "claim_code", nullable = false, unique = true, length = 60, insertable = false, updatable = false)
     private String claimCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
