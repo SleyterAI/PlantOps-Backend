@@ -2,10 +2,7 @@ package com.CV.PlantOps.Users.Entity;
 
 import com.CV.PlantOps.Users.Enum.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
@@ -13,15 +10,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true,length = 30, nullable = false)
-    private String name;
+    @Column(unique = true, length = 30, nullable = false)
+    private String username;
 
-    @Column(unique = true,length = 50, nullable = false)
+    @Column(unique = true, length = 50, nullable = false)
     private String email;
 
     @Column(nullable = false)
