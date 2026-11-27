@@ -3,6 +3,8 @@ package com.CV.PlantOps.Distribution.Entity;
 import com.CV.PlantOps.Distribution.Enum.LocationType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
 
 import java.math.BigDecimal;
 
@@ -19,8 +21,9 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "code", nullable = false, unique = true, length = 60)
-    private String code;
+    @Generated(event = EventType.INSERT)
+    @Column(name = "location_code", nullable = false, unique = true, length = 60, insertable = false, updatable = false)
+    private String locationCode;
 
     @Column(name = "name", nullable = false, length = 150)
     private String name;

@@ -7,12 +7,14 @@ import com.CV.PlantOps.Products.Entity.Product;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "batch")
+@Table(name = "batchs")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -32,7 +34,8 @@ public class Batch {
     @JoinColumn(name = "production_order_id")
     private ProductionOrder productionOrder;
 
-    @Column(name = "batch_code", nullable = false, unique = true, length = 80)
+    @Generated(event = EventType.INSERT)
+    @Column(name = "batch_code", nullable = false, unique = true, length = 60, insertable = false, updatable = false)
     private String batchCode;
 
     @PositiveOrZero

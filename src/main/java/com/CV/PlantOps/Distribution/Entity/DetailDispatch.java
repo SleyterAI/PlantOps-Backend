@@ -3,6 +3,8 @@ package com.CV.PlantOps.Distribution.Entity;
 import com.CV.PlantOps.Distribution.Enum.DispatchStatus;
 import lombok.*;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Generated;
+import org.hibernate.generator.EventType;
 
 import java.time.LocalDateTime;
 
@@ -19,8 +21,9 @@ public class DetailDispatch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "dispatch_number", nullable = false, unique = true, length = 60)
-    private String dispatchNumber;
+    @Generated(event = EventType.INSERT)
+    @Column(name = "dispatch_code", nullable = false, unique = true, length = 60, insertable = false, updatable = false)
+    private String dispatchCode;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "origin_headquarter_id", nullable = false)
