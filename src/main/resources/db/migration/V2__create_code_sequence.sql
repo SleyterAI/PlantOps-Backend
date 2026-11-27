@@ -1,4 +1,4 @@
--- V1__add_auto_codes.sql
+-- V2__add_auto_codes.sql
 
 -- 1. Product: INTERNAL_CODE (INT01, INT02...)
 CREATE SEQUENCE IF NOT EXISTS internal_code_seq START 1 INCREMENT 1;
